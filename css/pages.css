@@ -106,6 +106,58 @@
     padding-top: var(--spacing-lg);
 }
 
+/* Booking Page Styles */
+.booking-page {
+    padding-top: var(--spacing-lg);
+}
+
+.booking-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    min-height: calc(100vh - 160px);
+    padding: var(--spacing-lg) 0;
+}
+
+.booking-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.booking-info {
+    background: var(--soft-beige);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+}
+
+.booking-info h3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.peak-hours p {
+    font-weight: 600;
+    margin: 0.25rem 0;
+}
+
+@media (min-width: 992px) {
+    .booking-container {
+        grid-template-columns: 1fr 420px; /* form and info side-by-side */
+        align-items: start;
+        gap: calc(var(--spacing-lg) * 1.5);
+    }
+}
+
 /* Center the contact section vertically in the viewport for a landing feel */
 .contact-section {
     display: flex;
