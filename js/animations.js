@@ -5,14 +5,54 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initializeAnimations() {
+    // Initialize section reveal first (so we can add animation classes)
+    initializeSectionReveal();
+
     // Initialize scroll animations
     initializeScrollAnimations();
-    
+
     // Initialize tilt effects
     initializeTiltEffects();
-    
+
     // Initialize parallax effects
     initializeParallax();
+}
+
+// Reveal sections by adding animation classes when they enter the viewport
+function initializeSectionReveal() {
+    const sectionSelectors = [
+        'main > section',
+        '.story-section',
+        '.values-section',
+        '.interior-section',
+        '.team-section',
+        '.contact-section',
+        '.booking-section',
+        '.menu-section',
+        '.gallery-grid'
+    ];
+
+    const sections = document.querySelectorAll(sectionSelectors.join(','));
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Prefer slide-in for sections with headings, otherwise fade-in
+                if (entry.target.querySelector && entry.target.querySelector('h2, h3')) {
+                    entry.target.classList.add('slide-in');
+                } else {
+                    entry.target.classList.add('fade-in');
+                }
+                obs.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -60px 0px'
+    });
+
+    sections.forEach(s => observer.observe(s));
 }
 
 // Scroll Animations

@@ -436,3 +436,37 @@
         align-items: center;
     }
 }
+
+/* Remove transform/scale hover on plain text elements to keep words stable */
+.nav-menu a,
+.value-card h3,
+.team-member h3,
+.gallery-overlay h3,
+.footer-section h3 {
+    transition: color 0.22s ease, background-color 0.22s ease;
+    transform: none !important;
+}
+
+.nav-menu a:hover {
+    /* keep background highlight but do not scale or translate the text */
+    transform: none !important;
+}
+
+/* Subtle separators between main page sections */
+main > section + section,
+.about-header + .story-section,
+.story-section + .values-section,
+.values-section + .interior-section,
+.interior-section + .team-section,
+.contact-header + .contact-section,
+.booking-header + .booking-section {
+    border-top: 1px solid rgba(30,30,30,0.06);
+    margin-top: calc(var(--spacing-lg) * 0.8);
+    padding-top: calc(var(--spacing-lg) * 0.9);
+}
+
+/* Make sure headings in sections stand out slightly */
+main section h2,
+main section h3 {
+    letter-spacing: 0.2px;
+}
