@@ -1,0 +1,209 @@
+/* CSS Variables for our color palette */
+:root {
+    --deep-coffee: #4B2E2B;
+    --cream-latte: #F3E9D2;
+    --caramel-gold: #C19A6B;
+    --soft-beige: #EADAC1;
+    --dark-charcoal: #1E1E1E;
+    --olive-green: #7A8450;
+    --burnt-orange: #C46A29;
+    
+    /* Additional variables */
+    --text-primary: var(--dark-charcoal);
+    --text-light: var(--cream-latte);
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--cream-latte);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    color: var(--deep-coffee);
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--deep-coffee);
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-brand {
+    color: var(--cream-latte);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu a {
+    color: var(--cream-latte);
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: 0 var(--spacing-sm);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: var(--caramel-gold);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('../assets/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--cream-latte);
+    padding: var(--spacing-lg);
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--cream-latte);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+    margin: var(--spacing-sm);
+}
+
+.btn-primary {
+    background-color: var(--caramel-gold);
+    color: var(--deep-coffee);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--cream-latte);
+    color: var(--cream-latte);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Flipcards */
+.flipcard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+}
+
+.flipcard {
+    perspective: 1000px;
+    height: 300px;
+}
+
+.flipcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flipcard:hover .flipcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flipcard-front,
+.flipcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+}
+
+.flipcard-front {
+    background-color: var(--soft-beige);
+}
+
+.flipcard-back {
+    background-color: var(--deep-coffee);
+    color: var(--cream-latte);
+    transform: rotateY(180deg);
+}
+
+/* Footer */
+footer {
+    background-color: var(--deep-coffee);
+    color: var(--cream-latte);
+    padding: var(--spacing-lg) 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-lg);
+}
+
+.footer-section h3 {
+    color: var(--caramel-gold);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--caramel-gold);
+    margin-top: var(--spacing-lg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
