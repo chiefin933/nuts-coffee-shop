@@ -106,6 +106,18 @@
     padding-top: var(--spacing-lg);
 }
 
+/* Center the contact section vertically in the viewport for a landing feel */
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    /* Use most of the viewport height but leave room for nav/footer */
+    min-height: calc(100vh - 160px);
+    padding: var(--spacing-lg) 0;
+}
+
 .contact-header {
     text-align: center;
     padding: var(--spacing-lg);
@@ -127,11 +139,16 @@
     padding: var(--spacing-lg);
     max-width: 1200px;
     margin: 0 auto;
+    /* center grid items horizontally and make items align nicely */
+    justify-items: center;
+    align-items: start;
 }
 
 .contact-info {
     display: grid;
     gap: var(--spacing-md);
+    /* center each info-card and limit width so content doesn't stretch too wide */
+    justify-items: center;
 }
 
 .info-card {
@@ -139,6 +156,8 @@
     padding: var(--spacing-lg);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 420px;
 }
 
 .info-card h3 {
@@ -167,6 +186,8 @@
     padding: var(--spacing-lg);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 720px;
 }
 
 .contact-form .form-group {
@@ -235,5 +256,28 @@
 
     .map iframe {
         height: 300px;
+    }
+}
+
+/* Larger screens: increase spacing and layout polish */
+@media (min-width: 992px) {
+    .contact-container {
+        grid-template-columns: 1fr 1fr; /* info + form side-by-side */
+        gap: calc(var(--spacing-lg) * 1.8);
+        align-items: start;
+        justify-items: center;
+    }
+
+    .contact-info {
+        gap: calc(var(--spacing-md) * 1.5);
+        justify-items: flex-start; /* keep info-cards aligned to left within their column */
+    }
+
+    .info-card {
+        max-width: 480px;
+    }
+
+    .contact-form-container {
+        max-width: 720px;
     }
 }
