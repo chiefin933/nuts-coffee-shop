@@ -26,11 +26,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: |
-            .
-            !.github
-            !node_modules
-            !**/*.yml
+          # Upload the repository root. Excluding paths here can sometimes
+          # cause the upload step to fail if patterns are misinterpreted.
+          # Keep this simple and let the Pages action handle the published content.
+          path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
